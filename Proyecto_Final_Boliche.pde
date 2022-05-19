@@ -6,6 +6,7 @@ void setup(){
   bola = new Bola(); 
   pista = new Pista();
   bolo = new Bolo();
+  pista.display();
   frameRate(20);
 }
 void dibujaBolos(){
@@ -28,10 +29,10 @@ void dibujaBolos(){
 }
 
 void draw(){
-  pista.display();
+  
   lights();
   dibujaBolos();
-  bola.display(width/2, height-250, 400);
+  bola.display();
   
   if(bola.visible){
     bola.avanzar();

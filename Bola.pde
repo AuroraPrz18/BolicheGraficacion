@@ -18,9 +18,11 @@ class Bola{
   }
   
   void display(){
-    pushMatrix();
-    translate(posicion.x, posicion.y, posicion.z);
-    shape(bola);
-    popMatrix();
+    if(visible){
+      pushMatrix();
+      translate(posicion.x, posicion.y, posicion.z);
+      shape(bola);
+      popMatrix();
+    }
   }
 }

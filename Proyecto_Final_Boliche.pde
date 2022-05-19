@@ -1,6 +1,7 @@
 Bola bola;
 Bolo bolo1, bolo2, bolo3, bolo4, bolo5, bolo6, bolo;
 Pista pista;
+boolean ejecucion, inicio;
 void setup(){
   size(800,650,P3D);
   bola = new Bola(); 
@@ -13,8 +14,12 @@ void setup(){
   bolo5 = new Bolo();//Caida lado izq
   bolo6 = new Bolo();//No caen
   pista.display();
+  pausa();
+  ejecucion = false;
+  inicio = true;
   frameRate(30);
 }
+
 void dibujaBolos(){
   //ambientLight(0,255,255,width/2+5, height/5+12, 90);
   // Bolo central
@@ -37,26 +42,60 @@ void dibujaBolosNoCaen(){
 }
 
 void draw(){
-  pista.pistaPrincipal();
-  lights();
-  bola.display();
-  
-  if(bola.visible){
-    bola.avanzar();
-    bola.display();
+  if(ejecucion){
+    if(bola.visible){
+      pista.pistaPrincipal();
+      lights();
+      
+      bola.avanzar();
+      bola.display();
+      
+      dibujaBolosNoCaen();
+      if(bola.posicion.y<=200){
+         bolo1.caer(0.08, PI/10); 
+         bolo2.caer(0.05, PI/10);
+         bolo3.caer(0.03, PI/12);
+         bolo4.caer(-0.05, PI/10);
+         bolo5.caer(-0.03, PI/12);
+      }else{
+         dibujaBolos(); 
+      }
+    } else{
+      ejecucion = false;
+      pausa();
+    }
   }
+}
+
+void reiniciar(){
+  pista.display();
+  bola = new Bola();
+  bolo = new Bolo();//Desaparece
+  bolo1 = new Bolo();//Caida recta
+  bolo2 = new Bolo();//Caida lado derecho
+  bolo3 = new Bolo();//Caida lado derecho
+  bolo4 = new Bolo();//Caida lado izq
+  bolo5 = new Bolo();//Caida lado izq
+  bolo6 = new Bolo();//No caen
+}
+
+void pausa(){
+  fill(0, 200);
+  rect(0, 0, width, height);
   
-  dibujaBolosNoCaen();
-  if(bola.posicion.y<=200){
-     bolo1.caer(0.08, PI/10); 
-     bolo2.caer(0.05, PI/10);
-     bolo3.caer(0.03, PI/12);
-     bolo4.caer(-0.05, PI/10);
-     bolo5.caer(-0.03, PI/12);
-  }else{
-     dibujaBolos(); 
+  noFill();
+  stroke(255);
+  strokeWeight(10);
+  ellipse(width/2, height/2, 150, 150);
+  triangle(width/2+40, height/2, width/2-25, height/2+40, width/2-25, height/2-40);
+  
+  strokeWeight(1);
+}
+
+void mouseClicked(){
+  if(mouseX>=0 && mouseX<width && mouseY>=0 && mouseY<height){
+    if(!bola.visible || inicio) reiniciar();
+    ejecucion = true;
+    inicio = false;
   }
-  
-  //println(mouseX + " : " + mouseY);
-  
 }

@@ -15,6 +15,16 @@ class Pista {
     vertex(292, 115, 0, 500, 500);//;isto
     vertex(0, 380, 0);
     endShape();
+    
+    noStroke(); //hueco principal para los bolos
+    fill(0, 0, 0);
+    beginShape();
+    vertex(282, 117, 0);
+    vertex(537, 113, 0);
+    vertex(537, 0, 0);
+    vertex(278, 0, 0);
+    vertex(270, 113, 0);
+    endShape();
   }
   void drawP() {
     fill(0, 0, 0);
@@ -81,16 +91,6 @@ class Pista {
     vertex(278, 103, 0);
     vertex(278, 0, 0);
     vertex(245, 0, 0);
-    endShape();
-
-    noStroke(); //hueco principal para los bolos
-    fill(0, 0, 0);
-    beginShape();
-    vertex(282, 117, 0);
-    vertex(537, 113, 0);
-    vertex(537, 0, 0);
-    vertex(278, 0, 0);
-    vertex(270, 113, 0);
     endShape();
 
     stroke(0); //line naranja (izquierda) pegada al hueco principal

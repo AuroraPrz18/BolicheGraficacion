@@ -29,7 +29,7 @@ void dibujaBolos(){
 }
 
 void draw(){
-  
+  pista.pistaPrincipal();
   lights();
   dibujaBolos();
   bola.display();

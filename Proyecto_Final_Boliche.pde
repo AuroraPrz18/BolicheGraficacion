@@ -1,16 +1,12 @@
 Bola bola;
 Bolo bolo;
 Pista pista;
-
-
 void setup(){
   size(800,650,P3D);
-  frameRate(1);
   bola = new Bola(); 
   pista = new Pista();
   bolo = new Bolo();
-  frameRate(5);
-  
+  frameRate(20);
 }
 void dibujaBolos(){
   //ambientLight(0,255,255,width/2+5, height/5+12, 90);
@@ -33,13 +29,14 @@ void dibujaBolos(){
 
 void draw(){
   pista.display();
-   lights();
-  //ambientLight(255, 255, 255, width/2, height, 450);
+  lights();
   dibujaBolos();
   bola.display(width/2, height-250, 400);
   
-  
-  
+  if(bola.visible){
+    bola.avanzar();
+    bola.display();
+  }
   
   //println(mouseX + " : " + mouseY);
   

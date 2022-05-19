@@ -12,14 +12,30 @@ void setup(){
   frameRate(5);
   
 }
+void dibujaBolos(){
+  //ambientLight(0,255,255,width/2+5, height/5+12, 90);
+  // Bolo central
+  bolo.display(width/2+5, height/5+12, 80);
+  // Bolos segunda fila
+  bolo.display(width/2+30, height/5, 60);
+  bolo.display(width/2-20, height/5, 60);
+  // Bolos tercera fila
+  bolo.display(width/2+55, height/5-12, 40);
+  bolo.display(width/2+5, height/5-12, 40);
+  bolo.display(width/2-45, height/5-12, 40);
+  // Bolos cuarta fila
+  bolo.display(width/2+80, height/5-24, 20);
+  bolo.display(width/2+30, height/5-24, 20);
+  bolo.display(width/2-20, height/5-24, 20);
+  bolo.display(width/2-70, height/5-24, 20);
+    
+}
 
 void draw(){
   pista.display();
-  ambientLight(255, 255, 255, width/2, height, 450)  ;
-  bolo.display(width/2+5, height/5, 40);
-  bolo.display(width/2+25, height/5-5, 30);
-  bolo.display(width/2+45, height/5-10, 20);
-  bolo.display(width/2+65, height/5-15, 10);
+   lights();
+  //ambientLight(255, 255, 255, width/2, height, 450);
+  dibujaBolos();
   bola.display(width/2, height-250, 400);
   
   
